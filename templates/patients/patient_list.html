@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Patients Page</h1>
+
+<table>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Blood_group</th>
+    <th>Phone Number</th>
+    <tr>
+{% for patient in patients %}
+    <td>{{patient.name}}</td>
+    <td>{{patient.age}}</td>
+    <td>{{patient.blood_group}}</td>
+    <td>{{ patient.phone }}</td>
+
+    <td>
+
+        <a href="{% url 'add_patient'  %}">
+            <button> Add </button>
+        </a>
+
+        <a href="{% url 'edit_patient' patient.id %}"> 
+            <button>Edit</button>
+            
+            
+        </a>
+
+        <a href="{% url 'delete_patient' patient.id %}"
+        onclick="return confirm ('Are you sure you want to delete this patient ?');">
+            
+
+
+
+            <button>Delete</button>
+        </a>
+        
+    </td>
+    </tr>
+
+{% endfor %}
+</table>
+
+{% endblock %}
